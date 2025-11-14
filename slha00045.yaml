@@ -1,0 +1,93 @@
+esphome:
+  name: slha00045
+  friendly_name: SLHA00045
+  name_add_mac_suffix: true
+
+esp32:
+  board: esp32-c6-devkitc-1
+  variant: esp32c6
+  framework:
+    type: esp-idf
+
+# Active les logs série/OTA pour le debug
+logger:
+
+# Intégration API Home Assistant
+api:
+
+# Mise à jour OTA sécurisée
+ota:
+  - platform: esphome
+
+# Configuration du Wi-Fi
+wifi:
+  ap:
+
+# Portail captif pour la configuration via le hotspot
+captive_portal:
+
+# Définition des sorties GPIO pour le pilotage du fil pilote et LED
+switch:
+  - platform: gpio
+    pin: GPIO1
+    name: "LED Verte"
+    id: led_verte
+    internal: true # Non visible dans l'interface Home Assistant
+
+  - platform: gpio
+    pin: GPIO22
+    name: "Fil Pilote N"
+    id: pilote_n
+    restore_mode: ALWAYS_ON # Redémarrage en hors-gel pour plus de sécurité
+    internal: true # Non visible dans l'interface Home Assistant
+
+  - platform: gpio
+    pin: GPIO23
+    name: "Fil Pilote P"
+    id: pilote_p
+    restore_mode: ALWAYS_OFF # Redémarrage en hors-gel pour plus de sécurité
+    internal: true # Non visible dans l'interface Home Assistant
+
+# Bus I2C pour le capteur AHT20 (Température et Humidité)
+i2c:
+  sda: GPIO6
+  scl: GPIO7
+  scan: true
+
+# Capteur de température et d’humidité (AHT20)
+sensor:
+  - platform: aht10
+    variant: AHT20
+    temperature:
+      name: "Température"
+      id: aht20_temperature
+    humidity:
+      name: "Humidité"
+      id: aht20_humidity
+    update_interval: 10s # Rafraîchissement toutes les 10 secondes
+
+# Thermostat basé sur la température (chauffage uniquement)
+climate:
+  - platform: thermostat
+    name: "Thermostat"
+    sensor: aht20_temperature
+    humidity_sensor: aht20_humidity
+    min_heating_off_time: 0s
+    min_heating_run_time: 0s
+    min_idle_time: 0s
+    heat_deadband: 0.1
+    heat_overrun: 0.1
+
+    # Actions à effectuer en mode chauffage
+    heat_action:
+      - switch.turn_off: pilote_n # Demi-alternances positive et négative coupées, mode confort
+      - switch.turn_on: led_verte
+
+    # Actions à effectuer en mode repos (arrêt du chauffage)
+    idle_action:
+      - switch.turn_off: led_verte
+      - switch.turn_on: pilote_n # Demi-alternance negative seule, mode hors-gel
+
+# LED de statut (ESPHome)
+status_led:
+  pin: GPIO10
