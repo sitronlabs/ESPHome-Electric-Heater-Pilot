@@ -79,11 +79,7 @@ esphome upload slha00045.yaml
 
 ### Step 2: Configure Wi-Fi
 
-On first boot, the device will create a fallback hotspot:
-- **SSID**: `SLHA00045 Fallback Hotspot`
-- **Password**: (configured in secrets)
-
-Connect to this hotspot and use the captive portal to configure your Wi-Fi credentials.
+On first boot, the device will create a fallback hotspot. Connect to this hotspot and use the captive portal to configure your Wi-Fi credentials.
 
 Alternatively, use the ESPHome Improv feature via serial or Bluetooth LE.
 
@@ -93,7 +89,6 @@ Alternatively, use the ESPHome Improv feature via serial or Bluetooth LE.
 2. Click **Add Integration**
 3. Search for **ESPHome**
 4. The device should auto-discover, or enter its IP address
-5. Enter the encryption key (if configured)
 
 ## ⚙️ Configuration
 
@@ -101,9 +96,9 @@ Alternatively, use the ESPHome Improv feature via serial or Bluetooth LE.
 
 The main configuration file is `slha00045.yaml`. Key sections:
 
-- **Wi-Fi**: Configure your network credentials
-- **API**: Home Assistant integration settings
-- **OTA**: Over-the-air update settings
+- **Wi-Fi**: Configure your network credentials (via captive portal or ESPHome Improv)
+- **API**: Home Assistant integration (auto-configured)
+- **OTA**: Over-the-air update settings (auto-configured)
 - **Sensors**: AHT20 temperature and humidity
 - **Climate**: Thermostat control logic
 
@@ -130,18 +125,6 @@ climate:
 #### Changing LED Behavior
 
 The green LED (GPIO1) can be customized in the `heat_action` and `idle_action` sections.
-
-### Secrets File
-
-Create a `secrets.yaml` file (not tracked in git) with:
-
-```yaml
-wifi_ssid: "YourWiFiSSID"
-wifi_password: "YourWiFiPassword"
-api_encryption_key: "YourEncryptionKey"
-ota_password: "YourOTAPassword"
-ap_password: "YourHotspotPassword"
-```
 
 ## 🏠 Usage in Home Assistant
 
@@ -218,8 +201,7 @@ Or use the ESPHome Dashboard's "Install" button.
 
 ### Device Not Connecting to Wi-Fi
 
-- Check credentials in `secrets.yaml`
-- Use the fallback hotspot to reconfigure
+- Use the fallback hotspot to reconfigure Wi-Fi credentials
 - Verify Wi-Fi signal strength at installation location
 
 ### Temperature Readings Incorrect
@@ -237,14 +219,13 @@ Or use the ESPHome Dashboard's "Install" button.
 ### OTA Updates Failing
 
 - Ensure device is on the same network
-- Check OTA password in secrets
 - Verify sufficient free space on device
 
 ## 📚 Resources
 
-- [🛒 Purchase Product](https://www.sitronlabs.com/r/slha00045-gh)
 - [ESPHome Documentation](https://esphome.io/)
-- [Schematic (PDF)](https://www.sitronlabs.com/r/slha00045-gh) (available on product page)
+- [Purchase Product](https://www.sitronlabs.com/r/slha00045-gh)
+- [Schematic (PDF)](https://www.sitronlabs.com/web/content/4183?unique=f5116a5f0a632eebf51473f468c9a14c32217038&download=true)
 
 ## ⚠️ Safety & Disclaimer
 
@@ -261,12 +242,8 @@ Or use the ESPHome Dashboard's "Install" button.
 ## 🤝 Support
 
 - **Issues**: [GitHub Issues](https://github.com/sitronlabs/ESPHome-Electric-Heater-Pilot/issues)
-- **Discord**: [Sitron Labs Discord](https://discord.gg/sitronlabs)
+- **Discord**: [Sitron Labs Discord](https://discord.gg/btnVDeWhfW)
 - **Website**: [Sitron Labs](https://www.sitronlabs.com)
-
-## 📄 License
-
-This firmware is provided as-is. See LICENSE file for details.
 
 ---
 
