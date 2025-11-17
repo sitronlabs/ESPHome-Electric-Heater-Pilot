@@ -1,8 +1,8 @@
-# About
+# ESPHome Electric Heater Pilot Module
 
 Add some information about your project here.
 
-# Installation
+## Installation
 
 You can use the button below to install the pre-built firmware directly to your device via USB from the browser.
 
