@@ -1,0 +1,50 @@
+--- --- @import "{{ site.theme }}";
+
+// Custom color variables (for your own use - the theme doesn't use variables)
+$primary-color: #2c3e50;
+$secondary-color: #3498db;
+$accent-color: #e74c3c;
+$background-color: #ffffff;
+$text-color: #333333;
+$link-color: $secondary-color;
+
+// Override theme colors (Slate theme uses hardcoded colors, so we override CSS directly)
+body {
+	color: $text-color;
+	background-color: $background-color;
+}
+
+a {
+	color: $link-color;
+
+	&:hover {
+		color: darken($link-color, 10%);
+	}
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	color: $primary-color;
+}
+
+// Override theme-specific elements
+#header_wrap {
+	background: $primary-color;
+	background: -moz-linear-gradient(top, lighten($primary-color, 10%), $primary-color);
+	background: -webkit-linear-gradient(top, lighten($primary-color, 10%), $primary-color);
+	background: -ms-linear-gradient(top, lighten($primary-color, 10%), $primary-color);
+	background: -o-linear-gradient(top, lighten($primary-color, 10%), $primary-color);
+	background: linear-gradient(to top, lighten($primary-color, 10%), $primary-color);
+}
+
+#main_content_wrap {
+	background: $background-color;
+}
+
+#footer_wrap {
+	background: $primary-color;
+}
