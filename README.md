@@ -1,24 +1,30 @@
 # SLHA00045 - ESPHome Electric Heater Pilot Module
 
-[![ESPHome](https://img.shields.io/badge/ESPHome-2024.12+-green.svg)](https://esphome.io/)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![ESPHome](https://img.shields.io/badge/ESPHome-2025.10+-green.svg)](https://esphome.io/)
+![License](https://img.shields.io/github/license/sitronlabs/ESPHome-Electric-Heater-Pilot)
+![Latest Version](https://img.shields.io/github/v/release/sitronlabs/ESPHome-Electric-Heater-Pilot?color=green)
+![Build Status Status](https://img.shields.io/github/actions/workflow/status/sitronlabs/ESPHome-Electric-Heater-Pilot/ci.yml)
 
-A smart module that enables Home Assistant and other ESPHome-compatible home automation systems to control electric heaters via the **fil pilote** (pilot wire) system, commonly used in France and other European countries.
+![Product Image](doc/product.png)
+
+**[🛒 Buy Now](https://www.sitronlabs.com/r/slha00045-gh)** | [Product Page](https://www.sitronlabs.com/r/slha00045-gh)
+
+A smart module that enables Home Assistant and other ESPHome-compatible home automation systems to control electric heaters via the **fil pilote** (pilot wire) system, used exclusively in France.
 
 ## 📋 Overview
 
-This module transforms any fixed electric heater (compatible with the pilot wire system) into a smart, connected device. It mounts directly onto your heater's junction box, replacing the existing cover, and provides:
+This module transforms any fixed electric heater (compatible with the pilot wire system used in France) into a smart, connected device. It mounts directly onto your heater's junction box, replacing the existing cover, and provides:
 
 - **Smart Thermostat Control**: Full heating control through your home automation system
 - **Temperature & Humidity Monitoring**: Built-in AHT20 sensor for accurate environmental readings
-- **Pilot Wire Control**: Direct control of the heater's pilot wire for different heating modes
+- **Pilot Wire Control**: Direct control of the heater's pilot wire (fil pilote, France only) for different heating modes
 - **Safety Features**: Automatic frost protection mode on startup
 
 ## ✨ Features
 
 - **ESP32-C6** microcontroller with Wi-Fi connectivity
 - **AHT20** temperature and humidity sensor (updates every 10 seconds)
-- **Pilot Wire Control**: 
+- **Pilot Wire Control** (fil pilote, France only): 
   - Comfort mode (heating ON)
   - Frost protection mode (hors-gel)
 - **Visual Feedback**: Green LED indicator for heating status
@@ -184,12 +190,12 @@ automation:
    - Ensure proper wire routing
 5. **Connect Wires**:
    - Connect phase (L) and neutral (N) from the heater
-   - Connect the pilot wire to the module's pilot wire terminals
+   - Connect the pilot wire (fil pilote, France only) to the module's pilot wire terminals
 6. **Power On**: Restore power and verify operation
 
 ### Pilot Wire Modes
 
-The module controls the heater through the pilot wire:
+The module controls the heater through the pilot wire (fil pilote system, used exclusively in France):
 
 - **Comfort Mode**: Both positive and negative half-cycles cut → Full heating
 - **Frost Protection**: Only negative half-cycle → Minimal heating (hors-gel)
@@ -224,8 +230,8 @@ Or use the ESPHome Dashboard's "Install" button.
 
 ### Heater Not Responding
 
-- Verify pilot wire connections
-- Check that the heater is compatible with pilot wire control
+- Verify pilot wire (fil pilote) connections
+- Check that the heater is compatible with pilot wire control (France only)
 - Test with a multimeter to confirm pilot wire signals
 
 ### OTA Updates Failing
@@ -236,9 +242,9 @@ Or use the ESPHome Dashboard's "Install" button.
 
 ## 📚 Resources
 
-- [Product Page](https://www.sitronlabs.com/store/slha00045-esphome-electric-heater-pilot-module-12)
+- [🛒 Purchase Product](https://www.sitronlabs.com/r/slha00045-gh)
 - [ESPHome Documentation](https://esphome.io/)
-- [Schematic (PDF)](https://www.sitronlabs.com/store/slha00045-esphome-electric-heater-pilot-module-12) (available on product page)
+- [Schematic (PDF)](https://www.sitronlabs.com/r/slha00045-gh) (available on product page)
 
 ## ⚠️ Safety & Disclaimer
 
